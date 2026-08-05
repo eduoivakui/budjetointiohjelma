@@ -7,5 +7,45 @@
 </head>
 <body>
     <link rel="stylesheet" href="style.css">
+    
+<div class="container">
+
+<h1>Kuukausibudjetin suunnittelutyökalu</h1>
+
+<div class="layout">
+
+
+
+<div class="card">
+
+<h2>Sinun palkkasi</h2>
+
+<label>Kuukausittainen tulo</label>
+<input
+type="number"
+id="income"
+placeholder="Enter your monthly income"
+oninput="updateSummary()">
+
+<div class="summary">
+
+<div class="income">
+Tulot:
+<span id="incomeDisplay">0.00</span>€
+</div>
+
+<div class="bills">
+Laskut:
+<span id="billDisplay">0.00</span>€
+</div>
+
+<div class="left">
+Rahaa jäljellä:
+<span id="leftDisplay">0.00</span>€
+</div>
+
+</div>
+
+</div>
 </body>
 </html>
