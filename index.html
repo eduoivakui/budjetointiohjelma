@@ -18,6 +18,12 @@ body{
     padding:30px;
 }
 
+@media (max-width:600px){
+    body{
+        padding:15px;
+    }
+}
+
 .container{
     max-width:1200px;
     margin:auto;
@@ -39,6 +45,12 @@ h1{
     padding:20px;
     border-radius:12px;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+@media (max-width:600px){
+    .card{
+        padding:15px;
+    }
 }
 
 label{
@@ -120,7 +132,77 @@ th{
     background:#fee2e2;
     color:#991b1b;
 }
+@media (max-width:600px){
 
+    button{
+        width:100%;
+    }
+
+}
+@media (max-width:600px){
+
+    .summary div{
+        font-size:16px;
+        padding:12px;
+    }
+
+}
+@media (max-width:700px){
+
+table,
+thead,
+tbody,
+th,
+td,
+tr{
+    display:block;
+}
+
+thead{
+    display:none;
+}
+
+tr{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin-bottom:15px;
+    padding:10px;
+}
+
+td{
+    border:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 0;
+}
+
+td::before{
+    font-weight:bold;
+}
+
+td:nth-child(1)::before{
+    content:"Meno";
+}
+
+td:nth-child(2)::before{
+    content:"Hinta";
+}
+
+td:nth-child(3)::before{
+    content:"Tuloista";
+}
+
+td:nth-child(4)::before{
+    content:"";
+}
+
+.delete{
+    width:100%;
+}
+
+}
 @media(max-width:900px){
     .layout{
         grid-template-columns:1fr;
