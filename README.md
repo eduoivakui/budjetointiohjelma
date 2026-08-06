@@ -1,1 +1,1 @@
-Kuukausittaisten menojen hallintaan varten oleva ohjlema!
+Kuukausittaisten menojen hallintaan varten oleva ohjelma!
