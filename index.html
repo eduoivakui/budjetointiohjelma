@@ -208,7 +208,19 @@ td:nth-child(4)::before{
         grid-template-columns:1fr;
     }
 }
+.chart-container{
+    position:relative;
+    width:100%;
+    height:350px;
+}
+
+@media(max-width:700px){
+    .chart-container{
+        height:250px;
+    }
+}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -289,10 +301,74 @@ Rahaa jäljellä:
 
 </div>
 
+<div class="card" style="margin-top:20px;">
+    <h2>Budjetin yhteenveto</h2>
+
+    <div class="chart-container">
+        <canvas id="budgetChart"></canvas>
+    </div>
+</div>
+
 <script>
 
 let utilities=[];
+let budgetChart;
+function updateChart(){
 
+const income=parseFloat(document.getElementById("income").value)||0;
+const bills=utilities.reduce((sum,u)=>sum+u.cost,0);
+const left=Math.max(income-bills,0);
+
+const data=[income,bills,left];
+
+if(budgetChart){
+
+    budgetChart.data.datasets[0].data=data;
+    budgetChart.update();
+    return;
+
+}
+
+const ctx=document.getElementById("budgetChart");
+
+budgetChart=new Chart(ctx,{
+
+    type:"bar",
+
+    data:{
+        labels:["Tulot","Menot","Jäljellä"],
+        datasets:[{
+            label:"€",
+            data:data,
+            backgroundColor:[
+                "#22c55e",
+                "#ef4444",
+                "#3b82f6"
+            ],
+            borderRadius:8
+        }]
+    },
+
+    options:{
+        responsive:true,
+        maintainAspectRatio:false,
+
+        plugins:{
+            legend:{
+                display:false
+            }
+        },
+
+        scales:{
+            y:{
+                beginAtZero:true
+            }
+        }
+    }
+
+});
+
+}
 function addUtility(){
 
 const name=document.getElementById("utilityName").value.trim();
@@ -339,7 +415,7 @@ tbody.innerHTML+=`
 <td>
 <button class="delete"
 onclick="removeUtility(${index})">
-Delete
+Poista
 </button>
 </td>
 </tr>
@@ -370,6 +446,7 @@ left.toFixed(2);
 
 renderPercentages();
 
+updateChart();
 }
 
 function renderPercentages(){
