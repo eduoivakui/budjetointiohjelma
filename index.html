@@ -1,101 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kuukausibudjetin suunnittelutyökalu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuukausibudjetin suunnittelutyökalu</title>
 
-<link rel="stylesheet" href="theme.css">
-<script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="theme.css">
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
 <div class="container">
 
-<h1>Kuukausibudjetin suunnittelutyökalu</h1>
+    <h1>Kuukausibudjetin suunnittelutyökalu</h1>
 
-<div class="layout">
+    <div class="card chart-card">
 
+        <h2>Budjetin yhteenveto</h2>
 
+        <div class="chart-container">
+            <canvas id="budgetChart"></canvas>
+        </div>
 
-<div class="card">
-
-<h2>Sinun palkkasi</h2>
-
-<label>Kuukausittainen tulo</label>
-<input
-type="number"
-id="income"
-placeholder="Lisää kuukausitulosi"
-oninput="updateSummary()">
-
-<div class="summary">
-
-<div class="income">
-Tulot:
-<span id="incomeDisplay">0.00</span>€
-</div>
-
-<div class="bills">
-Laskut:
-<span id="billDisplay">0.00</span>€
-</div>
-
-<div class="left">
-Rahaa jäljellä:
-<span id="leftDisplay">0.00</span>€
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>Kuukausittaiset Menot</h2>
-
-<label>Menon nimi</label>
-<input id="utilityName" placeholder="Sähkö">
-
-<label>Kuukausittainen maksu</label>
-<input id="utilityCost" type="number" placeholder="125">
-
-<button onclick="addUtility()">Lisää meno</button>
-
-<table>
-
-<thead>
-<tr>
-<th>Meno</th>
-<th>Hinta</th>
-<th>% Tuloista</th>
-<th></th>
-</tr>
-</thead>
-
-<tbody id="tableBody">
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="card" style="margin-top:20px;">
-    <h2>Budjetin yhteenveto</h2>
-
-    <div class="chart-container">
-        <canvas id="budgetChart"></canvas>
     </div>
+
+    <div class="layout">
+
+        <div class="card">
+
+            <h2>Sinun palkkasi</h2>
+
+            <label>Kuukausittainen tulo</label>
+
+            <input
+                type="number"
+                id="income"
+                placeholder="Lisää kuukausitulosi"
+                oninput="updateSummary()"
+            >
+
+            <div class="summary">
+
+                <div class="income">
+                    Tulot:
+                    <span id="incomeDisplay">0.00</span>€
+                </div>
+
+                <div class="bills">
+                    Laskut:
+                    <span id="billDisplay">0.00</span>€
+                </div>
+
+                <div class="left">
+                    Rahaa jäljellä:
+                    <span id="leftDisplay">0.00</span>€
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Kuukausittaiset menot</h2>
+
+            <label>Menon nimi</label>
+
+            <input
+                id="utilityName"
+                placeholder="Sähkö"
+            >
+
+            <label>Kuukausittainen maksu</label>
+
+            <input
+                id="utilityCost"
+                type="number"
+                placeholder="125"
+            >
+
+            <button onclick="addUtility()">
+                Lisää meno
+            </button>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Meno</th>
+                        <th>Hinta</th>
+                        <th>% Tuloista</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody id="tableBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
 </div>
 
 </body>
 </html>
-
